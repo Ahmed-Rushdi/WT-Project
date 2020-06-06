@@ -32,7 +32,10 @@ if(array_key_exists('type',$_SESSION)){
                 <div>
                     <input type="password" id="pw1" name="password" class="box textIn" maxlength="50" placeholder="Password">
                 </div>
-
+                <div>
+                    <input type="checkbox" name="remember" id="remember">
+                    <label for="remember">Remember Me</label>
+                </div>
                 <button type="submit" class="box btn">Login</button>
 
                 <p>Need an account? <a href="register.php">Sign up</a></p>
@@ -60,7 +63,10 @@ if ($_POST) {
     AND password='" . mysqli_real_escape_string($conn, $password) . "'";
     if ($result = mysqli_query($conn, $sql)) {
         if (mysqli_num_rows($result)) {
-            echo $sql;
+            if(isset($_POST['remember'])){
+                setcookie('email',$row['email'], time() + 60 * 60 * 24 * 7);
+                setcookie('name',$row['name'], time() + 60 * 60 * 24 * 7);
+            }
             $row = mysqli_fetch_array($result);
             $_SESSION['name'] = $row['name'];
             $_SESSION['email'] = $row['email'];
