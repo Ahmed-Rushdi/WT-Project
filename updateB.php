@@ -80,7 +80,7 @@ if ($_POST) {
             <form method="post">
                 <table class="">
                     <tr>
-                        <th colspan="2">Enter Book information to add to database</th>
+                        <th colspan="2">Enter Book information to update to database</th>
                     </tr>
 
                     <tr>

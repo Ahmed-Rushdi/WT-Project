@@ -66,6 +66,7 @@ if ($_POST) {
             if(isset($_POST['remember'])){
                 setcookie('email',$row['email'], time() + 60 * 60 * 24 * 7);
                 setcookie('name',$row['name'], time() + 60 * 60 * 24 * 7);
+                setcookie('type',$row['type'], time() + 60 * 60 * 24 * 7);
             }
             $row = mysqli_fetch_array($result);
             $_SESSION['name'] = $row['name'];
